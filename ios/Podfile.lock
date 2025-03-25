@@ -1242,6 +1242,53 @@ PODS:
     - ReactCommon/turbomodule/bridging
     - ReactCommon/turbomodule/core
     - Yoga
+  - react-native-blob-util (0.21.2):
+    - DoubleConversion
+    - glog
+    - hermes-engine
+    - RCT-Folly (= 2024.01.01.00)
+    - RCTRequired
+    - RCTTypeSafety
+    - React-Core
+    - React-debug
+    - React-Fabric
+    - React-featureflags
+    - React-graphics
+    - React-ImageManager
+    - React-NativeModulesApple
+    - React-RCTFabric
+    - React-rendererdebug
+    - React-utils
+    - ReactCodegen
+    - ReactCommon/turbomodule/bridging
+    - ReactCommon/turbomodule/core
+    - Yoga
+  - react-native-cookies (6.2.1):
+    - React-Core
+  - react-native-ota-hot-update (2.1.5):
+    - DoubleConversion
+    - glog
+    - hermes-engine
+    - RCT-Folly (= 2024.01.01.00)
+    - RCTRequired
+    - RCTTypeSafety
+    - React-Core
+    - React-debug
+    - React-Fabric
+    - React-featureflags
+    - React-graphics
+    - React-ImageManager
+    - React-NativeModulesApple
+    - React-RCTFabric
+    - React-rendererdebug
+    - React-utils
+    - ReactCodegen
+    - ReactCommon/turbomodule/bridging
+    - ReactCommon/turbomodule/core
+    - SSZipArchive (~> 2.4.3)
+    - Yoga
+  - react-native-restart (0.0.27):
+    - React-Core
   - react-native-safe-area-context (5.3.0):
     - DoubleConversion
     - glog
@@ -1792,6 +1839,7 @@ PODS:
     - ReactCommon/turbomodule/core
     - Yoga
   - SocketRocket (0.7.1)
+  - SSZipArchive (2.4.3)
   - Yoga (0.0.0)
 
 DEPENDENCIES:
@@ -1832,6 +1880,10 @@ DEPENDENCIES:
   - React-logger (from `../node_modules/react-native/ReactCommon/logger`)
   - React-Mapbuffer (from `../node_modules/react-native/ReactCommon`)
   - React-microtasksnativemodule (from `../node_modules/react-native/ReactCommon/react/nativemodule/microtasks`)
+  - react-native-blob-util (from `../node_modules/react-native-blob-util`)
+  - "react-native-cookies (from `../node_modules/@react-native-cookies/cookies`)"
+  - react-native-ota-hot-update (from `../node_modules/react-native-ota-hot-update`)
+  - react-native-restart (from `../node_modules/react-native-restart`)
   - react-native-safe-area-context (from `../node_modules/react-native-safe-area-context`)
   - react-native-video (from `../node_modules/react-native-video`)
   - React-nativeconfig (from `../node_modules/react-native/ReactCommon`)
@@ -1871,6 +1923,7 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - SocketRocket
+    - SSZipArchive
 
 EXTERNAL SOURCES:
   boost:
@@ -1944,6 +1997,14 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon"
   React-microtasksnativemodule:
     :path: "../node_modules/react-native/ReactCommon/react/nativemodule/microtasks"
+  react-native-blob-util:
+    :path: "../node_modules/react-native-blob-util"
+  react-native-cookies:
+    :path: "../node_modules/@react-native-cookies/cookies"
+  react-native-ota-hot-update:
+    :path: "../node_modules/react-native-ota-hot-update"
+  react-native-restart:
+    :path: "../node_modules/react-native-restart"
   react-native-safe-area-context:
     :path: "../node_modules/react-native-safe-area-context"
   react-native-video:
@@ -2051,6 +2112,10 @@ SPEC CHECKSUMS:
   React-logger: d42a53754a7252cc7a851315f0da2e46b450ea92
   React-Mapbuffer: 89885d1518433a462fe64b68bf5e097997380090
   React-microtasksnativemodule: 36341e09dcd1df535503e6ed2ddf88f10da56d52
+  react-native-blob-util: 5c9cd69d650932ed699ed51fe026a55aeb070bca
+  react-native-cookies: d648ab7025833b977c0b19e142503034f5f29411
+  react-native-ota-hot-update: 504ce9dad51d161a5a3c1c3f887316da38382718
+  react-native-restart: 0bc732f4461709022a742bb29bcccf6bbc5b4863
   react-native-safe-area-context: 1550432038745277e5ce44b4be1abb94306d8f68
   react-native-video: b2754b8c562434a25b02695b5e4bf6577c5f5bf8
   React-nativeconfig: 539ff4de6ce3b694e8e751080568c281c84903ce
@@ -2086,6 +2151,7 @@ SPEC CHECKSUMS:
   RNSVG: bbbdd17e8730c0f2a9cb416e5f37be87e29ebc90
   RNVectorIcons: a24016b773380b1aa37fca501ec6b94a951890a0
   SocketRocket: d4aabe649be1e368d1318fdf28a022d714d65748
+  SSZipArchive: fe6a26b2a54d5a0890f2567b5cc6de5caa600aef
   Yoga: be6f55a028e86c83ae066f018e9b5d24ffc45436
 
 PODFILE CHECKSUM: 1452f887adbaba4b8a3a781994c5b6dcda2085e0

@@ -26,11 +26,11 @@ import DraggableComponent from '../../component/DraggableComponent';
 import {SvgXml} from 'react-native-svg';
 import {loginArrow, logoSvg} from '../../svg';
 import {useAppDispatch} from '../../store/hooks';
-import {LoginById} from '../../reducers/UserSlice';
+import {loginById} from '../../reducers/UserSlice';
 import {style} from './ForgotPassword';
 function LoginPage() {
   const navigation: NavigationProp<ParamListBase> = useNavigation();
-  const [user, setUser] = useState({employeeId: '', password: ''});
+  const [user, setUser] = useState({employeeId: 'SURYA0026', password: '12345678'});
   const [error, setError] = useState({employee: '', password: ''});
   const [active, setActive] = useState(false);
   const [slide, setSlide] = useState(false);
@@ -46,7 +46,7 @@ function LoginPage() {
   }, [user]);
   useEffect(() => {
     if (active && slide) {
-      dispatch(LoginById({...user})).then(e => {
+      dispatch(loginById({...user})).then(e => {
         setSlide(false);
         if (!e.payload.success) {
           if (e.payload.message.includes('yee')) {

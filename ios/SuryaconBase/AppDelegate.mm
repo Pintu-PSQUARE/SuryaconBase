@@ -2,6 +2,9 @@
 
 #import <React/RCTBundleURLProvider.h>
 
+//codepush 
+#import "OtaHotUpdate.h"
+
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -20,12 +23,29 @@
 }
 
 - (NSURL *)bundleURL
+
+//code push
 {
 #if DEBUG
   return [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@"index"];
 #else
-  return [[NSBundle mainBundle] URLForResource:@"main" withExtension:@"jsbundle"];
+  return [OtaHotUpdate getBundle]; ## add this line
 #endif
+}
+
+- (void)applicationWillResignActive:(UIApplication *)application {
+   if (self.taskIdentifier != UIBackgroundTaskInvalid) {
+      [application endBackgroundTask:self.taskIdentifier];
+      self.taskIdentifier = UIBackgroundTaskInvalid;
+   }
+
+   __weak AppDelegate *weakSelf = self;
+   self.taskIdentifier = [application beginBackgroundTaskWithName:nil expirationHandler:^{
+      if (weakSelf) {
+          [application endBackgroundTask:weakSelf.taskIdentifier];
+          weakSelf.taskIdentifier = UIBackgroundTaskInvalid;
+      }
+   }];
 }
 
 @end

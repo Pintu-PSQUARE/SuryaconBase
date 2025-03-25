@@ -1,11 +1,12 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable react-native/no-inline-styles */
-import React, {useEffect} from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import React, { useEffect, useState } from 'react';
+import { ActivityIndicator, View } from 'react-native';
 import {routes} from './src/config/Env';
-import {} from 'react-native';
 import {
+  DownloadResource,
   ForgotPassword,
   LoginPage,
   LoginWithNumber,
@@ -16,11 +17,39 @@ import {
 // import {useAppSelector} from './src/store/hooks';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import useHapticFeedback from './src/hooks/useHapticFeedback';
+import {useAppSelector,useAppDispatch} from './src/store/hooks';
+import { restoreSession } from './src/reducers/UserSlice';
 
 const Stack = createNativeStackNavigator();
 function App(): React.JSX.Element {
-  // const {isLogin, user} = useAppSelector(state => state.userStore);
+  const dispatch = useAppDispatch();
+  const {isLogin, user} = useAppSelector(state => state.userStore);
+  const [initializing, setInitializing] = useState(true);
+
+  useEffect(() => {
+    const loadSession = async () => {
+      try {
+        // Try to restore session when app starts
+        await dispatch(restoreSession());
+      } catch (error) {
+        console.log('No active session found');
+      } finally {
+        setInitializing(false);
+      }
+    };
+
+    loadSession();
+  }, [dispatch]);
   const {triggerHaptic} = useHapticFeedback();
+
+  if (initializing) {
+    return (
+      <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+        <ActivityIndicator size="large" color="black" />
+      </View>
+    );
+  }
+
   return (
     <SafeAreaView
       style={{flex: 1, backgroundColor: 'transparent'}}
@@ -28,9 +57,11 @@ function App(): React.JSX.Element {
       <NavigationContainer onStateChange={() => triggerHaptic('impactMedium')}>
         <Stack.Navigator
           screenOptions={{
-            headerShown: false, // Hide header for a clean UI
-            animation: 'slide_from_right', // Apply fade animation on navigation
+            headerShown: false,
+            animation: 'slide_from_right',
           }}>
+          {!isLogin ? (
+            <>
               <Stack.Screen
                 options={{
                   headerShown: false,
@@ -73,6 +104,16 @@ function App(): React.JSX.Element {
                 name={routes.LOGINWITHNUMBER}
                 component={LoginWithNumber}
               />
+            </>
+          ) : (
+            <Stack.Screen
+              options={{
+                headerShown: false,
+              }}
+              name={routes.DOWNLOAD_RESOURCE}
+              component={DownloadResource}
+            />
+          )}
         </Stack.Navigator>
       </NavigationContainer>
     </SafeAreaView>

@@ -76,6 +76,7 @@ export const routes = {
   ITEM_REQUEST_REVIEW: 'ITEM_REQUEST_REVIEW',
   MANPOWER_REQUEST: 'MANPOWER_REQUEST',
   PM_BAG: 'PM_BAG',
+  DOWNLOAD_RESOURCE: 'DOWNLOAD_RESOURCE',
 };
 
 export const font = {
@@ -89,6 +90,6 @@ export const font = {
   NunitoSemiBold: 'Nunito-SemiBold',
 };
 // export const apiUrl = "http://admin.suryacon.net/api/v1"
-export const apiUrl = 'http://192.168.29.241:3000/api/v1';
+export const apiUrl = 'http://192.168.29.189:3000/api/v1';
 export const ENDPOINT = 'http://192.168.29.174:8080';
 // export const ENDPOINT = "http://socket.suryacon.net"
